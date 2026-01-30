@@ -1,9 +1,9 @@
 /*
-Answer: What are the top skills based on salary in the UK?
- - Look at the average salary associated with each skill for Data Analyst positions
--- Focuses on REMOTE Data Analyst roles with specified salaries in the UK & US
+Answer: What are the top skills based on salary in the US & UK?
+ - Look at the average salary associated with each skill for Data Analyst positions.
+-- Focuses on REMOTE Data Analyst roles with specified salaries in the UK & US.
  - Why? It reveals how different skills impact salary levels for Data Analysts and
-        helps identify the most financially rewarding skills to acquire or improve
+        helps identify the most financially rewarding skills to acquire or improve.
 */
 
 SELECT
@@ -26,11 +26,3 @@ HAVING
 ORDER BY
     avg_salary DESC
 LIMIT 25;
-
-/*
-Here's a breakdown of the results for top paying skills:
-
-- High Demand for Big Data & ML Skills: Tools such as PySpark, Jupyter, Pandas.
-- Software Development & Deployment Proficiency: Skills like GitLab, Bitbucket, Jenkins.
-- Cloud & Data Infrastructure Expertise: Proficiency with Elasticsearch, Databricks, GCP.
-*/

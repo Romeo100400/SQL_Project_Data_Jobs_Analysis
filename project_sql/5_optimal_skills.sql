@@ -1,9 +1,9 @@
 /*
-Answer: What are the most optimal skills to learn (aka skills that are both in high demand and high-paying)?
- - Identify skills in high demand and associated with high average salaries for Data Analyst roles
- - Concentrates on remote positions with specified salaries in the UK & US
+Answer: What are the most optimal skills to learn (aka skills that are both in high demand and high-paying)in the US & UK?
+ - Identify skills in high demand and associated with high average salaries for Data Analyst roles.
+ - Concentrates on remote positions with specified salaries in the US & UK.
  - Why? Targets skills that offer job security (high demand) and financial benefits (high salaries),
-        offering strategic insights for career development in data analysis
+        offering strategic insights for career development in data analysis.
 */
 
 SELECT
