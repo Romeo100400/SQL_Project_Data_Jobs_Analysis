@@ -25,4 +25,4 @@ HAVING
     COUNT(DISTINCT job_postings_fact.job_id) >= 5
 ORDER BY
     avg_salary DESC
-LIMIT 25;
+LIMIT 10;
