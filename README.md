@@ -94,6 +94,80 @@ All top-paying roles identified are remote-friendly, reinforcing the growing ava
 
 ![Top Paying Roles](assets/1_top_paying_roles.png)
 
+*Bar graph visualizing the salary for the top 10 salaries for data analyst; ChatGPT generated thiis graph from my SQL query results*
+
+### 2. Skills Required for Top-Paying Data Analyst Jobs
+
+This analysis identifies the skills most commonly required for the top-paying remote Data Analyst roles in the United States and the United Kingdom.
+
+**Approach:**
+
+- Start from the top 10 highest-paying Data Analyst roles identified in the first analysis.
+- Use a Common Table Expression (CTE) to isolate these top-paying jobs.
+- Join job postings with the skills tables to retrieve all associated skills.
+- Associate each skill with its corresponding job and salary.
+
+**Goal:**
+
+To understand which technical and analytical skills are most frequently demanded by the highest-paying Data Analyst positions, helping job seekers focus on skills aligned with top compensation.
+
+```sql
+WITH top_paying_jobs AS (
+    SELECT
+        job_id,
+        job_title,
+        salary_year_avg,
+        name AS company_name
+    FROM
+        job_postings_fact
+    LEFT JOIN company_dim 
+        ON job_postings_fact.company_id = company_dim.company_id
+    WHERE
+        job_title_short = 'Data Analyst'
+        AND job_country IN ('United Kingdom', 'United States')
+        AND job_work_from_home = TRUE
+        AND salary_year_avg IS NOT NULL
+    ORDER BY
+        salary_year_avg DESC
+    LIMIT 10
+)
+
+SELECT
+    top_paying_jobs.*,
+    skills
+FROM
+    top_paying_jobs
+INNER JOIN skills_job_dim 
+    ON top_paying_jobs.job_id = skills_job_dim.job_id
+INNER JOIN skills_dim 
+    ON skills_job_dim.skill_id = skills_dim.skill_id
+ORDER BY
+    salary_year_avg DESC;
+```
+
+**📌 Key Findings**
+
+Based on the skills associated with the top-paying Data Analyst roles, several clear patterns emerge:
+
+- **🧠 Core Programming Skills**
+
+**SQL and Python** appear consistently across the highest-paying roles, confirming their importance as foundational skills for top-compensation analytics positions.
+
+- **📊 Data Analysis & Visualization Tools**
+
+Tools such as **Excel, Tableau, and Power BI** are frequently required, highlighting the continued need to translate data into actionable insights—even at senior levels.
+
+- **☁️ Cloud & Big Data Technologies**
+
+Skills including **AWS, Azure, Databricks, Snowflake, and Hadoop** are commonly associated with higher-paying roles, reflecting demand for experience with scalable data platforms.
+
+- **🔧 Workflow & Collaboration Tools**
+
+Technologies like **Git, Jira, Confluence, and other Atlassian tools** appear across multiple roles, emphasizing the importance of collaboration within mature data teams.
+
+
+
+Horizontal bar chart showing the frequency of skills required across the top 10 highest-paying Data Analyst roles in the US & UK (2023).
 # What I Learned
 
 # Conclusions
